@@ -7,6 +7,8 @@
  */
 package io.camunda.tasklist.qa.util.rest;
 
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import static org.springframework.beans.factory.config.BeanDefinition.SCOPE_PROTOTYPE;
 
 import io.camunda.tasklist.exceptions.TasklistRuntimeException;
@@ -118,7 +120,7 @@ public class StatefulRestTemplate extends RestTemplate {
         path = contextPath + urlPart;
       }
 
-      return new URL(String.format("http://%s:%s%s", host, port, path)).toURI();
+      return Urls.create(String.format("http://%s:%s%s", host, port, path), Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS).toURI();
     } catch (URISyntaxException | MalformedURLException e) {
       throw new RuntimeException("Error occurred while constructing URL", e);
     }
@@ -129,7 +131,7 @@ public class StatefulRestTemplate extends RestTemplate {
       return getURL(urlPart);
     }
     try {
-      return new URL(String.format("%s?%s", getURL(urlPart), urlParams)).toURI();
+      return Urls.create(String.format("%s?%s", getURL(urlPart), urlParams), Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS).toURI();
     } catch (URISyntaxException | MalformedURLException e) {
       throw new RuntimeException("Error occurred while constructing URL", e);
     }

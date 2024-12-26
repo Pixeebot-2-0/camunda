@@ -16,6 +16,8 @@
 package io.camunda.zeebe.client.impl.oauth;
 
 import io.camunda.zeebe.client.impl.util.Environment;
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -245,7 +247,7 @@ public final class OAuthCredentialsProviderBuilder {
       Objects.requireNonNull(
           authorizationServerUrl, String.format(INVALID_ARGUMENT_MSG, "authorization server URL"));
 
-      authorizationServer = new URL(authorizationServerUrl);
+      authorizationServer = Urls.create(authorizationServerUrl, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
       credentialsCache = new File(credentialsCachePath);
 
       if (credentialsCache.isDirectory()) {

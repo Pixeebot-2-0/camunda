@@ -20,6 +20,8 @@ import io.camunda.optimize.service.dashboard.DashboardService;
 import io.camunda.optimize.service.dashboard.InstantPreviewDashboardService;
 import io.camunda.optimize.service.exceptions.OptimizeValidationException;
 import io.camunda.optimize.service.security.SessionService;
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -220,7 +222,7 @@ public class DashboardRestService {
 
   private boolean isValidURL(final String url) {
     try {
-      new URL(url).toURI();
+      Urls.create(url, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS).toURI();
       return true;
     } catch (final MalformedURLException | URISyntaxException e) {
       return false;

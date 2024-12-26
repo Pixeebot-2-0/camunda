@@ -92,6 +92,7 @@
     <maven.compiler.target>21</maven.compiler.target>
     <maven.compiler.source>21</maven.compiler.source>
     <spring-boot.version>3.3.4</spring-boot.version>
+    <versions.java-security-toolkit>1.2.1</versions.java-security-toolkit>
   </properties>
 
   <modules>
@@ -176,6 +177,11 @@
         <groupId>jakarta.ws.rs</groupId>
         <artifactId>jakarta.ws.rs-api</artifactId>
         <version>${jakarta.rs-api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.github.pixee</groupId>
+        <artifactId>java-security-toolkit</artifactId>
+        <version>${versions.java-security-toolkit}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
