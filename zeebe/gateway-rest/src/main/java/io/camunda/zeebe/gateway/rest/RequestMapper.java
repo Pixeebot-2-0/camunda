@@ -91,6 +91,7 @@ import io.camunda.zeebe.protocol.record.value.AuthorizationResourceType;
 import io.camunda.zeebe.protocol.record.value.PermissionAction;
 import io.camunda.zeebe.protocol.record.value.PermissionType;
 import io.camunda.zeebe.util.Either;
+import io.github.pixee.security.Filenames;
 import java.io.IOException;
 import java.io.InputStream;
 import java.time.Duration;
@@ -502,7 +503,7 @@ public class RequestMapper {
 
     if (metadata == null) {
       return new DocumentMetadataModel(
-          file.getContentType(), file.getOriginalFilename(), null, file.getSize(), Map.of());
+          file.getContentType(), Filenames.toSimpleFileName(file.getOriginalFilename()), null, file.getSize(), Map.of());
     }
     final OffsetDateTime expiresAt;
     if (metadata.getExpiresAt() == null || metadata.getExpiresAt().isBlank()) {
@@ -511,7 +512,7 @@ public class RequestMapper {
       expiresAt = OffsetDateTime.parse(metadata.getExpiresAt());
     }
     final var fileName =
-        Optional.ofNullable(metadata.getFileName()).orElse(file.getOriginalFilename());
+        Optional.ofNullable(metadata.getFileName()).orElse(Filenames.toSimpleFileName(file.getOriginalFilename()));
     final var contentType =
         Optional.ofNullable(metadata.getContentType()).orElse(file.getContentType());
 
