@@ -8,6 +8,7 @@
 package io.camunda.tasklist.webapp.security;
 
 import static io.camunda.tasklist.webapp.security.TasklistURIs.*;
+import io.github.pixee.security.Newlines;
 import static org.apache.hc.core5.http.ContentType.APPLICATION_JSON;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 import static org.springframework.http.HttpStatus.UNAUTHORIZED;
@@ -211,7 +212,7 @@ public abstract class BaseWebConfigurer {
     if (shouldAddCSRF(request)) {
       final CsrfToken token = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
       if (token != null) {
-        response.setHeader(X_CSRF_TOKEN, token.getToken());
+        response.setHeader(X_CSRF_TOKEN, Newlines.stripAll(token.getToken()));
       }
     }
     return response;
