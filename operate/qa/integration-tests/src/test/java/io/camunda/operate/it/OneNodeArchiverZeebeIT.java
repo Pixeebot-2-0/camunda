@@ -10,6 +10,7 @@ package io.camunda.operate.it;
 import static io.camunda.operate.qa.util.RestAPITestUtil.createGetAllFinishedRequest;
 import static io.camunda.operate.qa.util.RestAPITestUtil.createGetAllProcessInstancesQuery;
 import static io.camunda.webapps.schema.descriptors.operate.template.ListViewTemplate.PROCESS_INSTANCE_JOIN_RELATION;
+import java.security.SecureRandom;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -81,7 +82,7 @@ public class OneNodeArchiverZeebeIT extends OperateZeebeAbstractIT {
 
   @Autowired private List<ProcessInstanceDependant> processInstanceDependantTemplates;
 
-  private final Random random = new Random();
+  private final Random random = new SecureRandom();
 
   private DateTimeFormatter dateTimeFormatter;
 

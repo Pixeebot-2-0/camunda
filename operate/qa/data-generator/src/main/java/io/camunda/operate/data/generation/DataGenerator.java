@@ -18,6 +18,7 @@ import io.camunda.zeebe.client.ZeebeClient;
 import io.camunda.zeebe.model.bpmn.Bpmn;
 import io.camunda.zeebe.model.bpmn.BpmnModelInstance;
 import jakarta.annotation.PreDestroy;
+import java.security.SecureRandom;
 import java.time.OffsetDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ public class DataGenerator {
   private ThreadPoolTaskExecutor dataGeneratorTaskExecutor;
 
   private final Set<String> bpmnProcessIds = new HashSet<>();
-  private final Random random = new Random();
+  private final Random random = new SecureRandom();
 
   public void createData() {
     final OffsetDateTime dataGenerationStart = OffsetDateTime.now();

@@ -8,6 +8,7 @@
 package io.camunda.zeebe.test.util.bpmn.random;
 
 import io.camunda.zeebe.model.bpmn.BpmnModelInstance;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -17,7 +18,7 @@ import java.util.Set;
 
 public class TestDataGenerator {
 
-  static final Random RANDOM = new Random();
+  static final Random RANDOM = new SecureRandom();
 
   public static Collection<TestDataRecord> generateTestRecords(
       final int processes, final int pathsPerProcess) {

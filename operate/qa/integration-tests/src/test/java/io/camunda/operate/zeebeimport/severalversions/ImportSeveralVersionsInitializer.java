@@ -11,6 +11,7 @@ import static io.camunda.operate.qa.util.ContainerVersionsUtil.VERSIONS_DELIMITE
 import static io.camunda.operate.qa.util.ContainerVersionsUtil.ZEEBE_VERSIONS_PROPERTY_NAME;
 import static io.camunda.operate.qa.util.TestContainerUtil.PROPERTIES_PREFIX;
 import static io.camunda.operate.util.ThreadUtil.sleepFor;
+import java.security.SecureRandom;
 import static org.assertj.core.api.Assertions.fail;
 
 import io.camunda.operate.qa.util.ContainerVersionsUtil;
@@ -44,7 +45,7 @@ public class ImportSeveralVersionsInitializer
 
   private ZeebeContainer zeebeContainer;
 
-  private final Random random = new Random();
+  private final Random random = new SecureRandom();
 
   private ZeebeClient client;
 

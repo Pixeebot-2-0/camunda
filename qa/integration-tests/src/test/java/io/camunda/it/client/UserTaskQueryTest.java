@@ -7,6 +7,7 @@
  */
 package io.camunda.it.client;
 
+import java.security.SecureRandom;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -358,7 +359,7 @@ class UserTaskQueryTest {
   @Test
   void shouldReturn404ForNotFoundUserTaskKey() {
     // when
-    final long userTaskKey = new Random().nextLong();
+    final long userTaskKey = new SecureRandom().nextLong();
     final var problemException =
         assertThrows(
             ProblemException.class,

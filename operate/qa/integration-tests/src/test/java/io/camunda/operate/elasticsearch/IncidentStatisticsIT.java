@@ -11,6 +11,7 @@ import static io.camunda.operate.util.TestUtil.createIncident;
 import static io.camunda.operate.util.TestUtil.createProcessInstanceEntity;
 import static io.camunda.operate.util.TestUtil.createProcessVersions;
 import static io.camunda.operate.webapp.rest.IncidentRestService.INCIDENT_URL;
+import java.security.SecureRandom;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
@@ -57,7 +58,7 @@ public class IncidentStatisticsIT extends OperateAbstractIT {
   private static final String QUERY_INCIDENTS_BY_ERROR_URL = INCIDENT_URL + "/byError";
   @Rule public SearchTestRule searchTestRule = new SearchTestRule();
   @MockBean private PermissionsService permissionsService;
-  private final Random random = new Random();
+  private final Random random = new SecureRandom();
 
   private final String tenantId1 = "tenant1";
   private final String tenantId2 = "tenant2";

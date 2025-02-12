@@ -10,6 +10,7 @@ package io.camunda.tasklist.util;
 import static io.camunda.tasklist.util.ConversionUtils.STRING_TO_LONG;
 
 import io.camunda.tasklist.exceptions.TasklistRuntimeException;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -153,7 +154,7 @@ public abstract class CollectionUtil {
   }
 
   public static <T> T chooseOne(List<T> items) {
-    return items.get(new Random().nextInt(items.size()));
+    return items.get(new SecureRandom().nextInt(items.size()));
   }
 
   public static <T> boolean allElementsAreOfType(Class clazz, T... array) {

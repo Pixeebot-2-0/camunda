@@ -38,6 +38,7 @@ import io.camunda.webapps.schema.entities.operation.OperationEntity;
 import io.camunda.webapps.schema.entities.operation.OperationState;
 import io.camunda.webapps.schema.entities.operation.OperationType;
 import java.io.IOException;
+import java.security.SecureRandom;
 import java.time.OffsetDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -60,7 +61,7 @@ public abstract class TestUtil {
 
   public static final String ERROR_MSG = "No more retries left.";
   private static final Logger LOGGER = LoggerFactory.getLogger(TestUtil.class);
-  private static final Random RANDOM = new Random();
+  private static final Random RANDOM = new SecureRandom();
 
   public static String createRandomString(final int length) {
     return UUID.randomUUID().toString().substring(0, length);
@@ -407,7 +408,7 @@ public abstract class TestUtil {
       final int versionsCount,
       final String tenantId) {
     final List<ProcessEntity> result = new ArrayList<>();
-    final Random processIdGenerator = new Random();
+    final Random processIdGenerator = new SecureRandom();
     for (int i = 1; i <= versionsCount; i++) {
       final ProcessEntity processEntity = new ProcessEntity();
       final Long processId = processIdGenerator.nextLong();

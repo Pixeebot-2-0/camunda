@@ -7,6 +7,7 @@
  */
 package io.camunda.tasklist.it;
 
+import java.security.SecureRandom;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -62,7 +63,7 @@ public class OneNodeArchiverIT extends TasklistZeebeIntegrationTest {
 
   @Autowired private PartitionHolder partitionHolder;
 
-  private Random random = new Random();
+  private Random random = new SecureRandom();
 
   private DateTimeFormatter dateTimeFormatter;
 

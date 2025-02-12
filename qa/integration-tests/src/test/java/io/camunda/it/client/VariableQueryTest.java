@@ -7,6 +7,7 @@
  */
 package io.camunda.it.client;
 
+import java.security.SecureRandom;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -266,7 +267,7 @@ class VariableQueryTest {
   @Test
   void shouldReturn404ForNotFoundVariableKey() {
     // when
-    final long variableKey = new Random().nextLong();
+    final long variableKey = new SecureRandom().nextLong();
     final var problemException =
         assertThrows(
             ProblemException.class,

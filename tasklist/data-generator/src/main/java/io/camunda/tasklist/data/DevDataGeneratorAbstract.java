@@ -19,6 +19,7 @@ import io.camunda.tasklist.util.ZeebeTestUtil;
 import io.camunda.zeebe.client.ZeebeClient;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import java.security.SecureRandom;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -51,7 +52,7 @@ public abstract class DevDataGeneratorAbstract implements DataGenerator {
 
   @Autowired private PayloadUtil payloadUtil;
 
-  private final Random random = new Random();
+  private final Random random = new SecureRandom();
 
   private final ExecutorService executor = Executors.newSingleThreadExecutor();
 

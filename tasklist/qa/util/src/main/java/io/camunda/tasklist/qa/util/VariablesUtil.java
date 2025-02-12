@@ -7,6 +7,7 @@
  */
 package io.camunda.tasklist.qa.util;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 public abstract class VariablesUtil {
@@ -14,7 +15,7 @@ public abstract class VariablesUtil {
   public static final String VAR_SUFFIX = "9999999999";
 
   public static String createBigVariable(int size, String suffix) {
-    final Random random = new Random();
+    final Random random = new SecureRandom();
     final StringBuffer sb = new StringBuffer();
     for (int i = 0; i < size; i++) {
       sb.append(random.nextInt(9));
