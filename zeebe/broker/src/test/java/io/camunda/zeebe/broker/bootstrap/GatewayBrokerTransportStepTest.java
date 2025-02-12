@@ -7,6 +7,7 @@
  */
 package io.camunda.zeebe.broker.bootstrap;
 
+import java.security.SecureRandom;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.awaitility.Awaitility.await;
 import static org.mockito.ArgumentMatchers.any;
@@ -98,7 +99,7 @@ class GatewayBrokerTransportStepTest {
     @Test
     void shouldStartAndInstallTransport() {
       // when
-      final int randomNodeId = new Random().nextInt(10);
+      final int randomNodeId = new SecureRandom().nextInt(10);
       when(mockBrokerInfo.getNodeId()).thenReturn(randomNodeId);
       sut.startupInternal(testBrokerStartupContext, CONCURRENCY_CONTROL, startupFuture);
       await().until(startupFuture::isDone);

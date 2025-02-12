@@ -17,6 +17,7 @@ package io.camunda.zeebe.client.impl.worker;
 
 import io.camunda.zeebe.client.api.worker.BackoffSupplier;
 import io.camunda.zeebe.client.api.worker.ExponentialBackoffBuilder;
+import java.security.SecureRandom;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -26,7 +27,7 @@ public final class ExponentialBackoffBuilderImpl implements ExponentialBackoffBu
   private static final long DEFAULT_MIN_DELAY = TimeUnit.MILLISECONDS.toMillis(50);
   private static final double DEFAULT_MULTIPLIER = 1.6;
   private static final double DEFAULT_JITTER = 0.1;
-  private static final Random DEFAULT_RANDOM = new Random();
+  private static final Random DEFAULT_RANDOM = new SecureRandom();
 
   private long maxDelay;
   private long minDelay;

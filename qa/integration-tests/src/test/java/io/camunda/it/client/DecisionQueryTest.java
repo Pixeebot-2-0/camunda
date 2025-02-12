@@ -7,6 +7,7 @@
  */
 package io.camunda.it.client;
 
+import java.security.SecureRandom;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -200,7 +201,7 @@ class DecisionQueryTest {
   @Test
   void shouldReturn404ForNotFoundDecisionKey() {
     // when
-    final long decisionKey = new Random().nextLong();
+    final long decisionKey = new SecureRandom().nextLong();
     final var problemException =
         assertThrows(
             ProblemException.class,
@@ -224,7 +225,7 @@ class DecisionQueryTest {
   @Test
   void shouldReturn404ForNotFoundDecisionDefinition() {
     // when
-    final long decisionKey = new Random().nextLong();
+    final long decisionKey = new SecureRandom().nextLong();
     final var problemException =
         assertThrows(
             ProblemException.class,
@@ -701,7 +702,7 @@ class DecisionQueryTest {
   @Test
   void shouldReturn404ForNotFoundDecisionRequirements() {
     // when
-    final long decisionRequirementsKey = new Random().nextLong();
+    final long decisionRequirementsKey = new SecureRandom().nextLong();
     final var problemException =
         assertThrows(
             ProblemException.class,
@@ -730,7 +731,7 @@ class DecisionQueryTest {
   @Test
   void shouldReturn404ForNotFoundDecisionInstance() {
     // when
-    final long decisionInstanceKey = new Random().nextLong();
+    final long decisionInstanceKey = new SecureRandom().nextLong();
     final var problemException =
         assertThrows(
             ProblemException.class,

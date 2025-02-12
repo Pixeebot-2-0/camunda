@@ -7,6 +7,7 @@
  */
 package io.camunda.zeebe.broker.bootstrap;
 
+import java.security.SecureRandom;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.awaitility.Awaitility.await;
 import static org.mockito.Mockito.RETURNS_DEEP_STUBS;
@@ -93,7 +94,7 @@ class RequestIdGeneratorStepTest {
     @Test
     void shouldStartAndInstallRequestIdGenerator() {
       // when
-      final int randomNodeId = new Random().nextInt(10);
+      final int randomNodeId = new SecureRandom().nextInt(10);
       when(mockBrokerInfo.getNodeId()).thenReturn(randomNodeId);
       sut.startup(testBrokerStartupContext);
       await().until(startupFuture::isDone);

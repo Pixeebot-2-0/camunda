@@ -7,6 +7,7 @@
  */
 package io.camunda.zeebe.it.network;
 
+import java.security.SecureRandom;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import io.camunda.zeebe.broker.test.EmbeddedBrokerRule;
@@ -164,7 +165,7 @@ public final class LargeMessageSizeTest {
         .join();
 
     final var byteArray = new byte[1024 * 1024]; // 1 MB
-    new Random().nextBytes(byteArray);
+    new SecureRandom().nextBytes(byteArray);
     final var message = new String(byteArray, StandardCharsets.UTF_8);
 
     final int numberOfJobsToActivate = 5;

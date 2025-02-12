@@ -15,6 +15,7 @@ import io.camunda.zeebe.test.util.bpmn.random.blocks.BlockSequenceBuilder.BlockS
 import io.camunda.zeebe.test.util.bpmn.random.blocks.ProcessBuilder;
 import io.camunda.zeebe.util.collection.Tuple;
 import java.io.File;
+import java.security.SecureRandom;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -75,7 +76,7 @@ public final class RandomProcessGenerator {
 
   // main method to test and debug this class
   public static void main(final String[] args) {
-    final Random random = new Random();
+    final Random random = new SecureRandom();
 
     for (int i = 0; i < 10; i++) {
       final int index = i;

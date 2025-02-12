@@ -10,6 +10,7 @@ package io.camunda.operate.util;
 import static io.camunda.operate.util.ConversionUtils.STRING_TO_LONG;
 
 import io.camunda.operate.exceptions.OperateRuntimeException;
+import java.security.SecureRandom;
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -171,7 +172,7 @@ public abstract class CollectionUtil {
   }
 
   public static <T> T chooseOne(List<T> items) {
-    return items.get(new Random().nextInt(items.size()));
+    return items.get(new SecureRandom().nextInt(items.size()));
   }
 
   public static <T> boolean allElementsAreOfType(Class clazz, T... array) {

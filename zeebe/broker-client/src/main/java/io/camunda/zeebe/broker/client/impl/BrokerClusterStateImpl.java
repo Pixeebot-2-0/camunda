@@ -9,6 +9,7 @@ package io.camunda.zeebe.broker.client.impl;
 
 import io.camunda.zeebe.broker.client.api.BrokerClusterState;
 import io.camunda.zeebe.protocol.record.PartitionHealthStatus;
+import java.security.SecureRandom;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
@@ -67,7 +68,7 @@ public final class BrokerClusterStateImpl implements BrokerClusterState {
     brokerVersions = new Int2ObjectHashMap<>();
     brokers = new IntArrayList(5, NODE_ID_NULL);
     partitions = new IntArrayList(32, PARTITION_ID_NULL);
-    randomBroker = new Random();
+    randomBroker = new SecureRandom();
   }
 
   public void setPartitionLeader(final int partitionId, final int leaderId, final long term) {

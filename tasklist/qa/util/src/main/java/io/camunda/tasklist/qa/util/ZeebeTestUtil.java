@@ -18,6 +18,7 @@ import io.camunda.zeebe.client.api.response.DeploymentEvent;
 import io.camunda.zeebe.client.api.response.ProcessInstanceEvent;
 import io.camunda.zeebe.client.api.worker.JobWorker;
 import io.camunda.zeebe.model.bpmn.BpmnModelInstance;
+import java.security.SecureRandom;
 import java.time.Duration;
 import java.util.Random;
 import org.slf4j.Logger;
@@ -27,7 +28,7 @@ public abstract class ZeebeTestUtil {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(ZeebeTestUtil.class);
 
-  private static final Random RANDOM = new Random();
+  private static final Random RANDOM = new SecureRandom();
 
   public static String deployProcess(
       final ZeebeClient client, final BpmnModelInstance processModel, final String resourceName) {

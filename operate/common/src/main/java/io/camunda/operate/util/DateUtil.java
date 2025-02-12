@@ -7,6 +7,7 @@
  */
 package io.camunda.operate.util;
 
+import java.security.SecureRandom;
 import java.time.Clock;
 import java.time.Instant;
 import java.time.OffsetDateTime;
@@ -16,7 +17,7 @@ import java.util.Random;
 
 public abstract class DateUtil {
 
-  private static final Random RANDOM = new Random();
+  private static final Random RANDOM = new SecureRandom();
 
   public static OffsetDateTime getRandomStartDate() {
     Instant now = Instant.now();
