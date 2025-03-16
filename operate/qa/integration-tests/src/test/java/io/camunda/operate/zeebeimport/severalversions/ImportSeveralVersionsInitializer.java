@@ -11,6 +11,7 @@ import static io.camunda.operate.qa.util.ContainerVersionsUtil.VERSIONS_DELIMITE
 import static io.camunda.operate.qa.util.ContainerVersionsUtil.ZEEBE_VERSIONS_PROPERTY_NAME;
 import static io.camunda.operate.qa.util.TestContainerUtil.PROPERTIES_PREFIX;
 import static io.camunda.operate.util.ThreadUtil.sleepFor;
+import java.nio.file.Files;
 import static org.assertj.core.api.Assertions.fail;
 
 import io.camunda.operate.qa.util.ContainerVersionsUtil;
@@ -89,7 +90,7 @@ public class ImportSeveralVersionsInitializer
   private File createTemporaryFolder() {
     final File createdFolder;
     try {
-      createdFolder = File.createTempFile("junit", "", null);
+      createdFolder = Files.createTempFile(null.toPath(), "junit", "").toFile();
       createdFolder.delete();
       createdFolder.mkdir();
       return createdFolder;

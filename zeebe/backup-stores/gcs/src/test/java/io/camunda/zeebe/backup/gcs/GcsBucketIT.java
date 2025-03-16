@@ -18,6 +18,7 @@ import io.camunda.zeebe.backup.common.NamedFileSetImpl;
 import io.camunda.zeebe.backup.gcs.util.GcsContainer;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Optional;
@@ -60,9 +61,9 @@ public class GcsBucketIT {
   @Test
   public void shouldStoreBackupInCorrectPaths() throws IOException {
     // given
-    final File snapshotFile1 = File.createTempFile("file1", "snapshotFile1");
-    final File snapshotFile2 = File.createTempFile("file2", "snapshotFile2");
-    final File segmentFile = File.createTempFile("file3", "segmentFile1");
+    final File snapshotFile1 = Files.createTempFile("file1", "snapshotFile1").toFile();
+    final File snapshotFile2 = Files.createTempFile("file2", "snapshotFile2").toFile();
+    final File segmentFile = Files.createTempFile("file3", "segmentFile1").toFile();
     final var backup =
         new BackupImpl(
             new BackupIdentifierImpl(1, 2, 3),
@@ -107,9 +108,9 @@ public class GcsBucketIT {
                 .withBasePath("root")
                 .withoutAuthentication()
                 .build());
-    final File snapshotFile1 = File.createTempFile("file1", "snapshotFile1");
-    final File snapshotFile2 = File.createTempFile("file2", "snapshotFile2");
-    final File segmentFile = File.createTempFile("file3", "segmentFile1");
+    final File snapshotFile1 = Files.createTempFile("file1", "snapshotFile1").toFile();
+    final File snapshotFile2 = Files.createTempFile("file2", "snapshotFile2").toFile();
+    final File segmentFile = Files.createTempFile("file3", "segmentFile1").toFile();
     final var backup =
         new BackupImpl(
             new BackupIdentifierImpl(1, 2, 3),
