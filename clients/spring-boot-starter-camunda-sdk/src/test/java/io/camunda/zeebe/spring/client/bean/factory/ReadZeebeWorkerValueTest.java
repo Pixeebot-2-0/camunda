@@ -104,7 +104,7 @@ public class ReadZeebeWorkerValueTest {
 
     final Method method =
         Arrays.stream(clazz.getMethods())
-            .filter(m -> m.getName().equals("handle"))
+            .filter(m -> "handle".equals(m.getName()))
             .findFirst()
             .get();
     final ClassInfo classInfo = ClassInfo.builder().build();

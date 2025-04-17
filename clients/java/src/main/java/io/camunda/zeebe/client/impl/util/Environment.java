@@ -51,7 +51,7 @@ public final class Environment {
   }
 
   public boolean getBoolean(final String key) {
-    return isDefined(key) && get(key).equals("true");
+    return isDefined(key) && "true".equals(get(key));
   }
 
   // primarily for testing

@@ -179,7 +179,7 @@ public class Namespace {
 
   @Override
   public String toString() {
-    if (!friendlyName.equals(NO_NAME)) {
+    if (!NO_NAME.equals(friendlyName)) {
       return MoreObjects.toStringHelper(getClass())
           .omitNullValues()
           .add("friendlyName", friendlyName)

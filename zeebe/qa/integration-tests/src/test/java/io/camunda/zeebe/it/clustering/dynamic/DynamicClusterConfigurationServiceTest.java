@@ -101,7 +101,7 @@ final class DynamicClusterConfigurationServiceTest {
       final MemberId memberId, final TestStandaloneBroker broker) {
     broker.withBrokerConfig(
         b -> {
-          if (!memberId.id().equals("0")) {
+          if (!"0".equals(memberId.id())) {
             // not coordinator. Give wrong configuration to verify that it is overwritten by dynamic
             // cluster topology. Note that this would not work in production because the engine
             // still reads the partition count from the static configuration, so message correlation

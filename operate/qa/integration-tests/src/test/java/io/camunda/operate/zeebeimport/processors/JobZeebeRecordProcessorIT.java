@@ -107,7 +107,7 @@ public class JobZeebeRecordProcessorIT extends OperateSearchAbstractIT {
         listenerReader.getListenerExecutions(String.valueOf(processInstanceId), listenerRequestDto);
     assertTrue(updateResponse.getTotalCount() == 1);
     final ListenerDto actualListenerRecord = updateResponse.getListeners().getFirst();
-    assertTrue(actualListenerRecord.getJobType().equals("ExampleListener"));
+    assertTrue("ExampleListener".equals(actualListenerRecord.getJobType()));
     assertTrue(actualListenerRecord.getState().equals(ListenerState.FAILED));
   }
 

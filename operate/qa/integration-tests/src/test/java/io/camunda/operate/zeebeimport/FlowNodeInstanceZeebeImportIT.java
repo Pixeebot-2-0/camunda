@@ -496,7 +496,7 @@ public class FlowNodeInstanceZeebeImportIT extends OperateZeebeAbstractIT {
     // level 1
     assertThat(instances).filteredOn("flowNodeId", "subprocess").hasSize(1);
     final FlowNodeInstanceDto subprocess =
-        instances.stream().filter(ai -> ai.getFlowNodeId().equals("subprocess")).findFirst().get();
+        instances.stream().filter(ai -> "subprocess".equals(ai.getFlowNodeId())).findFirst().get();
     assertThat(subprocess.getState()).isEqualTo(FlowNodeStateDto.INCIDENT);
     assertThat(instances)
         .filteredOn(ai -> !ai.getFlowNodeId().equals("subprocess"))
@@ -508,7 +508,7 @@ public class FlowNodeInstanceZeebeImportIT extends OperateZeebeAbstractIT {
     assertThat(instances).filteredOn("flowNodeId", "innerSubprocess").hasSize(1);
     final FlowNodeInstanceDto innerSubprocess =
         instances.stream()
-            .filter(ai -> ai.getFlowNodeId().equals("innerSubprocess"))
+            .filter(ai -> "innerSubprocess".equals(ai.getFlowNodeId()))
             .findFirst()
             .get();
     assertThat(innerSubprocess.getState()).isEqualTo(FlowNodeStateDto.INCIDENT);
@@ -550,7 +550,7 @@ public class FlowNodeInstanceZeebeImportIT extends OperateZeebeAbstractIT {
     // level 1
     assertThat(instances).filteredOn("flowNodeId", "subprocess").hasSize(1);
     final FlowNodeInstanceDto subprocess =
-        instances.stream().filter(ai -> ai.getFlowNodeId().equals("subprocess")).findFirst().get();
+        instances.stream().filter(ai -> "subprocess".equals(ai.getFlowNodeId())).findFirst().get();
     assertThat(subprocess.getState()).isEqualTo(FlowNodeStateDto.INCIDENT);
     assertThat(instances)
         .filteredOn(ai -> !ai.getFlowNodeId().equals("subprocess"))
@@ -563,7 +563,7 @@ public class FlowNodeInstanceZeebeImportIT extends OperateZeebeAbstractIT {
     assertThat(instances).filteredOn("flowNodeId", "innerSubprocess").hasSize(1);
     final FlowNodeInstanceDto innerSubprocess =
         instances.stream()
-            .filter(ai -> ai.getFlowNodeId().equals("innerSubprocess"))
+            .filter(ai -> "innerSubprocess".equals(ai.getFlowNodeId()))
             .findFirst()
             .get();
     assertThat(innerSubprocess.getState()).isEqualTo(FlowNodeStateDto.INCIDENT);
