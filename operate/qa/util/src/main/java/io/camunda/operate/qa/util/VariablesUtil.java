@@ -8,6 +8,7 @@
 package io.camunda.operate.qa.util;
 
 import com.google.gson.Gson;
+import java.security.SecureRandom;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -46,7 +47,7 @@ public abstract class VariablesUtil {
   }
 
   public static String createBigVariable(int size) {
-    final Random random = new Random();
+    final Random random = new SecureRandom();
     final StringBuffer sb = new StringBuffer();
     for (int i = 0; i < size; i++) {
       sb.append(random.nextInt(9));

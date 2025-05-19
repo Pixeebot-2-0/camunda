@@ -9,6 +9,7 @@ package io.camunda.operate.qa.backup;
 
 import static io.camunda.webapps.schema.descriptors.operate.template.ListViewTemplate.JOIN_RELATION;
 import static io.camunda.webapps.schema.descriptors.operate.template.ListViewTemplate.PROCESS_INSTANCE_JOIN_RELATION;
+import java.security.SecureRandom;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.elasticsearch.index.query.QueryBuilders.termQuery;
 
@@ -68,7 +69,7 @@ public class DataGenerator {
    */
   private ZeebeClient zeebeClient;
 
-  private final Random random = new Random();
+  private final Random random = new SecureRandom();
 
   private List<Long> processInstanceKeys = new ArrayList<>();
 

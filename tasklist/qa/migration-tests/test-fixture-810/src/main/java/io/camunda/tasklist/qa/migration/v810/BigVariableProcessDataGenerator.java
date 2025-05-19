@@ -9,6 +9,7 @@ package io.camunda.tasklist.qa.migration.v810;
 
 import static io.camunda.tasklist.property.ImportProperties.DEFAULT_VARIABLE_SIZE_THRESHOLD;
 import static io.camunda.tasklist.qa.util.VariablesUtil.createBigVariableWithSuffix;
+import java.security.SecureRandom;
 import static org.elasticsearch.index.query.QueryBuilders.termQuery;
 
 import io.camunda.tasklist.qa.util.TestContext;
@@ -55,7 +56,7 @@ public class BigVariableProcessDataGenerator {
   @Qualifier("tasklistEsClient")
   private RestHighLevelClient esClient;
 
-  private final Random random = new Random();
+  private final Random random = new SecureRandom();
 
   private void init(final TestContext testContext) {
     zeebeClient =

@@ -9,6 +9,7 @@ package io.camunda.tasklist.it;
 
 import static io.camunda.tasklist.util.TestCheck.PROCESS_INSTANCE_IS_CANCELED_CHECK;
 import static io.camunda.tasklist.util.TestCheck.PROCESS_INSTANCE_IS_COMPLETED_CHECK;
+import java.security.SecureRandom;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -72,7 +73,7 @@ public class ArchiverIT extends TasklistZeebeIntegrationTest {
   private TaskArchiverJob archiverJob;
   private ProcessInstanceArchiverJob processInstanceArchiverJob;
 
-  private Random random = new Random();
+  private Random random = new SecureRandom();
 
   private DateTimeFormatter dateTimeFormatter;
 

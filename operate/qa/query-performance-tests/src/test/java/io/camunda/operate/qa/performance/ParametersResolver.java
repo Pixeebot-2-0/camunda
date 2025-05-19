@@ -9,6 +9,7 @@ package io.camunda.operate.qa.performance;
 
 import static io.camunda.webapps.schema.descriptors.operate.template.ListViewTemplate.JOIN_RELATION;
 import static io.camunda.webapps.schema.descriptors.operate.template.ListViewTemplate.PROCESS_INSTANCE_JOIN_RELATION;
+import java.security.SecureRandom;
 import static org.elasticsearch.index.query.QueryBuilders.constantScoreQuery;
 import static org.elasticsearch.index.query.QueryBuilders.termQuery;
 
@@ -80,7 +81,7 @@ public class ParametersResolver {
   private List<String> processIds = new ArrayList<>();
   private String startDateBefore;
   private String startDateAfter;
-  private final Random random = new Random();
+  private final Random random = new SecureRandom();
 
   @PostConstruct
   public void resolveParameters() throws URISyntaxException {

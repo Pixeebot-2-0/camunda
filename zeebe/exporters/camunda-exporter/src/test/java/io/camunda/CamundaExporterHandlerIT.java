@@ -8,6 +8,7 @@
 package io.camunda;
 
 import static io.camunda.zeebe.protocol.record.intent.ProcessInstanceIntent.ELEMENT_ACTIVATING;
+import java.security.SecureRandom;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.doReturn;
@@ -567,7 +568,7 @@ public class CamundaExporterHandlerIT {
     // given
     final var exporter = getExporter(config, handler);
 
-    final var initialDocumentId = String.valueOf(new Random().nextLong(Long.MAX_VALUE));
+    final var initialDocumentId = String.valueOf(new SecureRandom().nextLong(Long.MAX_VALUE));
     clientAdapter.index(initialDocumentId, handler.getIndexName(), new HashMap<>());
 
     final Record<T> operationRecord =

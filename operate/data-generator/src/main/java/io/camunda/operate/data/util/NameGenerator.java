@@ -7,6 +7,7 @@
  */
 package io.camunda.operate.data.util;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 public abstract class NameGenerator {
@@ -96,7 +97,7 @@ public abstract class NameGenerator {
     "Carter"
   };
 
-  private static Random random = new Random();
+  private static Random random = new SecureRandom();
 
   public static String getRandomFirstName() {
     return firstNames[random.nextInt(firstNames.length)];

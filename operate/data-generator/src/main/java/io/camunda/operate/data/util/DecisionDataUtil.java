@@ -23,6 +23,7 @@ import io.camunda.webapps.schema.entities.operate.dmn.DecisionInstanceState;
 import io.camunda.webapps.schema.entities.operate.dmn.DecisionType;
 import io.camunda.webapps.schema.entities.operate.dmn.definition.DecisionDefinitionEntity;
 import io.camunda.webapps.schema.entities.operate.dmn.definition.DecisionRequirementsEntity;
+import java.security.SecureRandom;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -53,7 +54,7 @@ public class DecisionDataUtil {
   public static final String TENANT2 = "tenant2";
   @Autowired protected DecisionStore decisionStore;
   private Map<Class<? extends ExporterEntity>, String> entityToESAliasMap;
-  private final Random random = new Random();
+  private final Random random = new SecureRandom();
 
   @Autowired
   @Qualifier("operateObjectMapper")

@@ -15,6 +15,7 @@
  */
 package io.atomix.raft;
 
+import java.security.SecureRandom;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
@@ -96,7 +97,7 @@ public final class RaftRule extends ExternalResource {
   private Map<String, AtomicReference<InMemorySnapshot>> snapshots;
   private Map<String, TestSnapshotStore> snapshotStores;
   private final Configurator configurator;
-  private final Random random = new Random();
+  private final Random random = new SecureRandom();
 
   private RaftRule(final int nodeCount, final Configurator configurator) {
     this.nodeCount = nodeCount;

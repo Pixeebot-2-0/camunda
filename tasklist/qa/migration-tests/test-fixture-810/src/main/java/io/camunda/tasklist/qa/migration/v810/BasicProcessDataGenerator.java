@@ -15,6 +15,7 @@ import io.camunda.zeebe.client.ZeebeClient;
 import io.camunda.zeebe.model.bpmn.Bpmn;
 import io.camunda.zeebe.model.bpmn.BpmnModelInstance;
 import java.io.IOException;
+import java.security.SecureRandom;
 import java.time.OffsetDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ public class BasicProcessDataGenerator {
   @Qualifier("tasklistEsClient")
   private RestHighLevelClient esClient;
 
-  private final Random random = new Random();
+  private final Random random = new SecureRandom();
 
   private List<Long> processInstanceKeys = new ArrayList<>();
 

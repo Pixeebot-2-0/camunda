@@ -10,6 +10,7 @@ package io.camunda.operate.it;
 import static io.camunda.operate.qa.util.RestAPITestUtil.createGetAllProcessInstancesQuery;
 import static io.camunda.operate.qa.util.RestAPITestUtil.createGetAllProcessInstancesRequest;
 import static io.camunda.operate.util.MetricAssert.assertThatMetricsFrom;
+import java.security.SecureRandom;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.containsString;
@@ -88,7 +89,7 @@ public class ArchiverZeebeIT extends OperateZeebeAbstractIT {
 
   private ProcessInstancesArchiverJob archiverJob;
 
-  private final Random random = new Random();
+  private final Random random = new SecureRandom();
 
   private DateTimeFormatter dateTimeFormatter;
 

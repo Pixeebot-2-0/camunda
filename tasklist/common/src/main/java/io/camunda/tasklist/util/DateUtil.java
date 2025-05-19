@@ -7,6 +7,7 @@
  */
 package io.camunda.tasklist.util;
 
+import java.security.SecureRandom;
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
@@ -22,7 +23,7 @@ public abstract class DateUtil {
       new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");
   private static final Logger LOGGER = LoggerFactory.getLogger(DateUtil.class);
 
-  private static final Random RANDOM = new Random();
+  private static final Random RANDOM = new SecureRandom();
 
   public static OffsetDateTime getRandomStartDate() {
     Instant now = Instant.now();

@@ -8,6 +8,7 @@
 package io.camunda.operate.elasticsearch;
 
 import static io.camunda.operate.util.TestUtil.createOperationEntity;
+import java.security.SecureRandom;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
@@ -44,7 +45,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 public class OperationExecutorIT extends OperateAbstractIT {
 
   @Rule public SearchTestRule searchTestRule = new SearchTestRule();
-  private final Random random = new Random();
+  private final Random random = new SecureRandom();
   @Autowired private OperateProperties operateProperties;
 
   @Autowired private OperationExecutor operationExecutor;
