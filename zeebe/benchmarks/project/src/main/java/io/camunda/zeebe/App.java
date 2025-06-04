@@ -21,6 +21,7 @@ import io.camunda.zeebe.client.api.response.Topology;
 import io.camunda.zeebe.config.AppCfg;
 import io.camunda.zeebe.config.AppConfigLoader;
 import io.camunda.zeebe.util.logging.ThrottledLogger;
+import io.github.pixee.security.BoundedLineReader;
 import io.grpc.ClientInterceptor;
 import io.micrometer.core.instrument.binder.grpc.MetricCollectingClientInterceptor;
 import io.micrometer.prometheus.PrometheusConfig;
@@ -121,7 +122,7 @@ abstract class App implements Runnable {
     try (final InputStreamReader reader = new InputStreamReader(inputStream)) {
       try (final BufferedReader br = new BufferedReader(reader)) {
         String line;
-        while ((line = br.readLine()) != null) {
+        while ((line = BoundedLineReader.readLine(br, 5_000_000)) != null) {
           stringBuilder.append(line).append("\n");
         }
       }

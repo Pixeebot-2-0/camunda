@@ -7,6 +7,7 @@
  */
 package io.camunda.zeebe.exporter.opensearch;
 
+import io.github.pixee.security.BoundedLineReader;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -186,9 +187,9 @@ final class BulkIndexRequestTest {
       try (final var input =
           new BufferedReader(new InputStreamReader(new ByteArrayInputStream(serializedBuffer)))) {
         deserializedOutput.add(
-            deserializeOperation(input.readLine().getBytes(), input.readLine().getBytes()));
+            deserializeOperation(BoundedLineReader.readLine(input, 5_000_000).getBytes(), BoundedLineReader.readLine(input, 5_000_000).getBytes()));
         deserializedOutput.add(
-            deserializeOperation(input.readLine().getBytes(), input.readLine().getBytes()));
+            deserializeOperation(BoundedLineReader.readLine(input, 5_000_000).getBytes(), BoundedLineReader.readLine(input, 5_000_000).getBytes()));
       }
 
       assertThat(deserializedOutput)
