@@ -11,6 +11,7 @@ import io.camunda.tasklist.qa.util.TestContainerUtil;
 import io.camunda.tasklist.qa.util.TestContext;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import org.apache.http.HttpHost;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +48,7 @@ public class ConnectionHolder {
   private File createTemporaryFolder() {
     final File createdFolder;
     try {
-      createdFolder = File.createTempFile("junit", "", null);
+      createdFolder = Files.createTempFile(null.toPath(), "junit", "").toFile();
       createdFolder.delete();
       createdFolder.mkdir();
       return createdFolder;
