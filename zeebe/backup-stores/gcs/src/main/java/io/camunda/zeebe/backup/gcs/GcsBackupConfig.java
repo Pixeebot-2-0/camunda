@@ -32,7 +32,7 @@ public record GcsBackupConfig(String bucketName, String basePath, GcsConnectionC
     }
 
     var sanitized = basePath.trim();
-    if (sanitized.isEmpty() || sanitized.equals("/")) {
+    if (sanitized.isEmpty() || "/".equals(sanitized)) {
       return null;
     }
 

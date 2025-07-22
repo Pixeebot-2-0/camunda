@@ -19,10 +19,10 @@ public final class PermissionConverter implements Converter<String, Permission> 
 
   @Override
   public Permission convert(final String source) {
-    if (source.equals(READ_PERMISSION_VALUE)) {
+    if (READ_PERMISSION_VALUE.equals(source)) {
       return Permission.READ;
     }
-    if (source.equals(WRITE_PERMISSION_VALUE)) {
+    if (WRITE_PERMISSION_VALUE.equals(source)) {
       return Permission.WRITE;
     }
     return null;

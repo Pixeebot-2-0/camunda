@@ -45,6 +45,6 @@ public class OpensearchListenerReaderTest {
                         .setFlowNodeId("1")
                         .setPageSize(10)
                         .setSorting(new SortingDto().setSortBy(JobTemplate.TIME))));
-    assertTrue(exception.getMessage().equals("Exception to test exception handling."));
+    assertTrue("Exception to test exception handling.".equals(exception.getMessage()));
   }
 }

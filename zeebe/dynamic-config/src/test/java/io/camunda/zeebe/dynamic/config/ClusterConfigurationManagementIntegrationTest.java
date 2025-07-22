@@ -256,7 +256,7 @@ class ClusterConfigurationManagementIntegrationTest {
   }
 
   private ActorFuture<Void> startNode(final TestNode node) {
-    if (node.cluster.getMembershipService().getLocalMember().id().id().equals("0")) {
+    if ("0".equals(node.cluster.getMembershipService().getLocalMember().id().id())) {
       return node.start(actorScheduler, clusterMemberIds, getExpectedPartitionDistribution());
     } else {
       return node.start(actorScheduler, clusterMemberIds, getIncorrectPartitionDistribution());

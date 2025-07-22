@@ -119,7 +119,7 @@ public class RaftAppendTest {
     final var firstMemberEntries = memberLog.get("1");
     final var members = memberLog.keySet();
     for (final var member : members) {
-      if (!member.equals("1")) {
+      if (!"1".equals(member)) {
         final var otherEntries = memberLog.get(member);
 
         assertThat(otherEntries)

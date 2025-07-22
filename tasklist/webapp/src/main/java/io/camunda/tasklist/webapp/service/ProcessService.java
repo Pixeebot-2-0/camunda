@@ -134,7 +134,7 @@ public class ProcessService {
   }
 
   private Object extractTypedValue(final VariableInputDTO variable) {
-    if (variable.getValue().equals("null")) {
+    if ("null".equals(variable.getValue())) {
       return objectMapper
           .nullNode(); // JSON Object null must be instanced like "null", also should not send to
       // objectMapper null values

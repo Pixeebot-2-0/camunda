@@ -147,7 +147,7 @@ public final class BpmnStateTransitionBehavior {
         new IllegalStateException(
             String.format(ALREADY_MIGRATED_ERROR_MSG, context.getBpmnElementType(), methodName));
     if (Arrays.stream(illegalStateException.getStackTrace())
-        .noneMatch(ele -> ele.getMethodName().equals("attemptToContinueProcessProcessing"))) {
+        .noneMatch(ele -> "attemptToContinueProcessProcessing".equals(ele.getMethodName()))) {
       throw illegalStateException;
     }
   }

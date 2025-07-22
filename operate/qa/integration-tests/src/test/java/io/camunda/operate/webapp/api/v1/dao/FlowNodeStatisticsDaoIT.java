@@ -98,28 +98,28 @@ public class FlowNodeStatisticsDaoIT extends OperateSearchAbstractIT {
     assertThat(flowNodeStatistics).hasSize(4);
     assertThat(
             flowNodeStatistics.stream()
-                .filter(x -> x.getActivityId().equals("ExclusiveGateway_05d8jf3"))
+                .filter(x -> "ExclusiveGateway_05d8jf3".equals(x.getActivityId()))
                 .findFirst()
                 .orElseThrow()
                 .getCompleted())
         .isEqualTo(1);
     assertThat(
             flowNodeStatistics.stream()
-                .filter(x -> x.getActivityId().equals("start"))
+                .filter(x -> "start".equals(x.getActivityId()))
                 .findFirst()
                 .orElseThrow()
                 .getCompleted())
         .isEqualTo(1);
     assertThat(
             flowNodeStatistics.stream()
-                .filter(x -> x.getActivityId().equals("taskA"))
+                .filter(x -> "taskA".equals(x.getActivityId()))
                 .findFirst()
                 .orElseThrow()
                 .getIncidents())
         .isEqualTo(1);
     assertThat(
             flowNodeStatistics.stream()
-                .filter(x -> x.getActivityId().equals("taskD"))
+                .filter(x -> "taskD".equals(x.getActivityId()))
                 .findFirst()
                 .orElseThrow()
                 .getActive())
